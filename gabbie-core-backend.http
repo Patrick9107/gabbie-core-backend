@@ -1,0 +1,6 @@
+@gabbie_core_backend_HostAddress = http://localhost:5120
+
+GET {{gabbie_core_backend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
