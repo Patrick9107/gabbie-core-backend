@@ -1,6 +1,6 @@
 <div hidden>
 ```
-@startuml
+@startuml gabbie
 
 ' Enum for Status
 enum OrderStatus {
@@ -141,5 +141,5 @@ Order "1" *-- "*" OrderItem : contains
 ```
 </div>
 
-![](firstDiagram.svg)
+![gabbie](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/jonashackt/plantuml-markdown/master/example-uml.iuml)
 
