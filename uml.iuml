@@ -7,6 +7,11 @@ Processed
 Delivered
 }
 
+enum Role {
+Admin, 
+Driver
+}
+
 enum DeliveryStatus {
 Scheduled
 InTransit
@@ -27,7 +32,7 @@ Unavailable
 }
 
 ' BaseEntity, extended by every other class
-class BaseEntity {
+abstract class BaseEntity {
 +id: int
 +createdAt: Date
 +updatedAt: Date
@@ -36,9 +41,18 @@ class BaseEntity {
 ' User entity
 class User {
 +username: string
-+password: string
+-password: Password
 +email: string
-+role: string
++role: Role
+}
+
+
+' Value Object: Password
+class Password {
+-hashedValue: string
++hash(rawPassword: string): Password
++verify(rawPassword: string): bool
++getHashedValue(): string
 }
 
 ' Product entity
@@ -73,7 +87,7 @@ class Order {
 +deliveryDate: Date
 +deliveryAddress: Address
 +phoneNumber: string
-+items: List<Product>
++items: List<OrderItem>
 +status: OrderStatus
 +note: string
 }
@@ -104,11 +118,19 @@ class Vehicle {
 +licensePlate: string
 +capacity: double
 +status: VehicleStatus
++reserveStock: List<OrderItem>
+
 }
 
 class OrderItem {
 +product: Product
 +quantity: int
+}
+
+' Container as a Record 
+class Container {
+    type: string
+    depositAmount: double
 }
 
 skinparam class {
